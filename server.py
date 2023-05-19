@@ -426,11 +426,11 @@ def testBackground():
 
 
 @app.route("/conn1", methods=['GET'])
-def func():
+def func1():
     print("[Flask server.py] GET path /conn1")
     return { "result": True }
 
 @app.route("/conn2", methods=['GET'])
-def func():
+def func2():
     print("[Flask server.py] GET path /conn2")
     return { "result": ABC_MONGODB_URI }
