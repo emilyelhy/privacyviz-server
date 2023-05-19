@@ -17,7 +17,7 @@ bcrypt = Bcrypt(app)
 CORS(app)
 
 #SERVER_IP_ADDR = os.getenv("SERVER_IP_ADDR")
-#SERVER_PORT = os.getenv("SERVER_PORT")
+#SERVER_PORT = os.environ["SERVER_PORT"]
 ABC_MONGODB_URI = os.environ["ABC_MONGODB_URI"]
 #ABC_MONGODB_DB_NAME = os.getenv("ABC_MONGODB_DB_NAME")
 #ABC_MONGODB_COLLECTION = os.getenv("ABC_MONGODB_COLLECTION")
