@@ -413,3 +413,8 @@ def testBackground():
     print("[Flask server.py] POST path /testbackground")
     print(request.json["body"])
     return { "result": True }
+
+@app.route("/conn", methods=['GET'])
+def func():
+    print("[Flask server.py] GET path /conn")
+    return { "result": True }
