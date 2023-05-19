@@ -396,7 +396,7 @@ def testConnection():
     datum = db[MEMBER_MONGODB_COLLECTION]
     user = datum.find_one({"email": request.json["email"]})
     if(user):
-        return { "result": user.email }
+        return { "result": user["email"] }
     return {"result": False}
 #     client = MongoClient(ABC_MONGODB_URI)
 #     db = client[ABC_MONGODB_DB_NAME]
