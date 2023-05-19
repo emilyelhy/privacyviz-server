@@ -1,4 +1,3 @@
-bson
 flask
 flask_bcrypt
 flask_cors
