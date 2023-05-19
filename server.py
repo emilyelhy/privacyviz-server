@@ -16,15 +16,15 @@ app = Flask(__name__)
 bcrypt = Bcrypt(app)
 CORS(app)
 
-SERVER_IP_ADDR = os.getenv("SERVER_IP_ADDR")
-SERVER_PORT = os.getenv("SERVER_PORT")
+#SERVER_IP_ADDR = os.getenv("SERVER_IP_ADDR")
+#SERVER_PORT = os.getenv("SERVER_PORT")
 ABC_MONGODB_URI = os.environ["ABC_MONGODB_URI"]
-ABC_MONGODB_DB_NAME = os.getenv("ABC_MONGODB_DB_NAME")
-ABC_MONGODB_COLLECTION = os.getenv("ABC_MONGODB_COLLECTION")
-MEMBER_MONGODB_URI = os.getenv("MEMBER_MONGODB_URI")
-MEMBER_MONGODB_DB_NAME = os.getenv("MEMBER_MONGODB_DB_NAME")
-MEMBER_MONGODB_COLLECTION = os.getenv("MEMBER_MONGODB_COLLECTION")
-LOCATION_MONGODB_COLLECTION = os.getenv("LOCATION_MONGODB_COLLECTION")
+#ABC_MONGODB_DB_NAME = os.getenv("ABC_MONGODB_DB_NAME")
+#ABC_MONGODB_COLLECTION = os.getenv("ABC_MONGODB_COLLECTION")
+#MEMBER_MONGODB_URI = os.getenv("MEMBER_MONGODB_URI")
+#MEMBER_MONGODB_DB_NAME = os.getenv("MEMBER_MONGODB_DB_NAME")
+#MEMBER_MONGODB_COLLECTION = os.getenv("MEMBER_MONGODB_COLLECTION")
+#LOCATION_MONGODB_COLLECTION = os.getenv("LOCATION_MONGODB_COLLECTION")
 
 DATATYPE = [
     { "name": "bluetooth" },
@@ -424,7 +424,13 @@ def testBackground():
     print(request.json["body"])
     return { "result": True }
 
-@app.route("/conn", methods=['GET'])
+
+@app.route("/conn1", methods=['GET'])
 def func():
-    print("[Flask server.py] GET path /conn")
+    print("[Flask server.py] GET path /conn1")
+    return { "result": True }
+
+@app.route("/conn2", methods=['GET'])
+def func():
+    print("[Flask server.py] GET path /conn2")
     return { "result": ABC_MONGODB_URI }
