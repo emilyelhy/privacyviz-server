@@ -391,31 +391,37 @@ def dataQuery():
 @app.route("/test", methods=['GET'])
 def testConnection():
     print("[Flask server.py] GET path /test")
-    client = MongoClient(ABC_MONGODB_URI)
-    db = client[ABC_MONGODB_DB_NAME]
-    datum = db[ABC_MONGODB_COLLECTION]
-    query = {
-        "$and": [
-            {
-                "subject.email": 'emily@kse.kaist.ac.kr',
-                "datumType": "BLUETOOTH"
-            },  
-            {
-                "timestamp": {"$gt": 1682592316687} # Data after 01/04/2023
-            },
-            {
-                "timestamp": {"$lt": 1682635521699}
-            }
-        ]
-    }
-    res = list(datum.find(query))
-    client.close()
-    if(res):
-        print("[Flask server.py] First entry of fetched data:" , len(res))
-    else:
-        print("[Flask server.py] No data is founded")
-        return { "result": "ConnSucess but nothing found" }
-    return { "result": "ConnSuccess" }
+    client = MongoClient(MEMBER_MONGODB_URI)
+    db = client[MEMBER_MONGODB_DB_NAME]
+    datum = db[MEMBER_MONGODB_COLLECTION]
+    user = datum.find_one({"email": request.json["email"]})
+    if(user) return { "result": user.email }
+    return {"result": False}
+#     client = MongoClient(ABC_MONGODB_URI)
+#     db = client[ABC_MONGODB_DB_NAME]
+#     datum = db[ABC_MONGODB_COLLECTION]
+#     query = {
+#         "$and": [
+#             {
+#                 "subject.email": 'emily@kse.kaist.ac.kr',
+#                 "datumType": "BLUETOOTH"
+#             },  
+#             {
+#                 "timestamp": {"$gt": 1682592316687} # Data after 01/04/2023
+#             },
+#             {
+#                 "timestamp": {"$lt": 1682635521699}
+#             }
+#         ]
+#     }
+#     res = list(datum.find(query))
+#     client.close()
+#     if(res):
+#         print("[Flask server.py] First entry of fetched data:" , len(res))
+#     else:
+#         print("[Flask server.py] No data is founded")
+#         return { "result": "ConnSucess but nothing found" }
+#     return { "result": "ConnSuccess" }
 
 # test the background running function in RN
 @app.route("/testbackground", methods=['POST'])
