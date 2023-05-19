@@ -16,19 +16,6 @@ app = Flask(__name__)
 bcrypt = Bcrypt(app)
 CORS(app)
 
-# get config from .env file
-BASEDIR = os.path.abspath(os.path.dirname(__file__))
-load_dotenv(BASEDIR + "/../../.env")
-SERVER_IP_ADDR = os.getenv("SERVER_IP_ADDR")
-SERVER_PORT = os.getenv("SERVER_PORT")
-ABC_MONGODB_URI = os.getenv("ABC_MONGODB_URI")
-ABC_MONGODB_DB_NAME = os.getenv("ABC_MONGODB_DB_NAME")
-ABC_MONGODB_COLLECTION = os.getenv("ABC_MONGODB_COLLECTION")
-MEMBER_MONGODB_URI = os.getenv("MEMBER_MONGODB_URI")
-MEMBER_MONGODB_DB_NAME = os.getenv("MEMBER_MONGODB_DB_NAME")
-MEMBER_MONGODB_COLLECTION = os.getenv("MEMBER_MONGODB_COLLECTION")
-LOCATION_MONGODB_COLLECTION = os.getenv("LOCATION_MONGODB_COLLECTION")
-
 DATATYPE = [
     { "name": "bluetooth" },
     { "name": "wifi" },
@@ -426,6 +413,3 @@ def testBackground():
     print("[Flask server.py] POST path /testbackground")
     print(request.json["body"])
     return { "result": True }
-
-if __name__ == "__main__":
-    app.run(debug=True, host=SERVER_IP_ADDR, port=SERVER_PORT)
