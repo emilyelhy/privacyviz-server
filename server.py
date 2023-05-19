@@ -417,4 +417,4 @@ def testBackground():
 @app.route("/conn", methods=['GET'])
 def func():
     print("[Flask server.py] GET path /conn")
-    return { "result": True }
+    return { "result": ABC_MONGODB_URI }
