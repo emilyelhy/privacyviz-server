@@ -2,6 +2,6 @@ bson
 flask
 flask_bcrypt
 flask_cors
-dotenv
+python-dotenv
 pymongo
 apscheduler
