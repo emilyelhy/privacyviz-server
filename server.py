@@ -134,8 +134,8 @@ def tryScheduler():
                             }
                         ]
                     }
-                    del = ABCDatum.delete_many(query)
-                    print(del.deleted_count)
+                    deletion = ABCDatum.delete_many(query)
+                    print(deletion.deleted_count)
             # handle location filtering
             if u["status"][s] == "location":
                 print("[Flask server.py] Handling location filtering for", s, "from user", u["email"])
@@ -176,8 +176,8 @@ def tryScheduler():
                             }
                         ]
                     }
-                    del = ABCDatum.delete_many(query)
-                    print(del.deleted_count)
+                    deletion = ABCDatum.delete_many(query)
+                    print(deletion.deleted_count)
     memberClient.close()
     ABCClient.close()
     return
@@ -185,7 +185,7 @@ def tryScheduler():
 # tryScheduler()
 
 scheduler = BackgroundScheduler(daemon = True, timezone="Asia/Seoul")
-scheduler.add_job(tryScheduler, 'cron', hour=2, minute=12)
+scheduler.add_job(tryScheduler, 'cron', hour=2, minute=25)
 scheduler.start()
 
 # delete data from MongoDB which matches the condition
