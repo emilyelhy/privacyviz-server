@@ -185,8 +185,9 @@ def tryScheduler():
 # tryScheduler()
 
 scheduler = BackgroundScheduler(daemon = True, timezone="Asia/Seoul")
-scheduler.add_job(tryScheduler, 'cron', hour=2, minute=25)
+scheduler.add_job(tryScheduler, 'cron', hour=4, minute=15)
 scheduler.start()
+print("[Flask server.py] Scheduler set")
 
 # delete data from MongoDB which matches the condition
 @app.route("/deletedata", methods=['POST'])
