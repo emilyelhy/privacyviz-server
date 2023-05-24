@@ -134,8 +134,8 @@ def tryScheduler():
                             }
                         ]
                     }
-                    waitingForDelete = list(ABCDatum.find(query))
-                    print(len(waitingForDelete))
+                    del = ABCDatum.delete_many(query)
+                    print(del.deleted_count)
             # handle location filtering
             if u["status"][s] == "location":
                 print("[Flask server.py] Handling location filtering for", s, "from user", u["email"])
@@ -176,8 +176,8 @@ def tryScheduler():
                             }
                         ]
                     }
-                    waitingForDelete = list(ABCDatum.find(query))
-                    print(len(waitingForDelete))
+                    del = ABCDatum.delete_many(query)
+                    print(del.deleted_count)
     memberClient.close()
     ABCClient.close()
     return
