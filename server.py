@@ -185,7 +185,7 @@ def tryScheduler():
 # tryScheduler()
 
 scheduler = BackgroundScheduler(daemon = True, timezone="Asia/Seoul")
-scheduler.add_job(tryScheduler, 'cron', hour=4, minute=15, misfire_grace_time=3600)
+scheduler.add_job(tryScheduler, 'cron', hour=4, minute=30, misfire_grace_time=3600)
 scheduler.start()
 print("[Flask server.py] Scheduler set")
 
