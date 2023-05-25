@@ -184,7 +184,7 @@ def tryScheduler():
     ABCClient.close()
     return
 
-tryScheduler()
+# tryScheduler()
 
 # scheduler = BackgroundScheduler(daemon = True, timezone="Asia/Seoul")
 # scheduler.add_job(tryScheduler, 'cron', hour=2, minute=12, misfire_grace_time=3600)
