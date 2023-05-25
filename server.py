@@ -40,7 +40,9 @@ DATATYPE = [
     { "name": "physical_activity" },
     { "name": "physical_activity_transition" },
     { "name": "survey" },
-    { "name": "media" }
+    { "name": "media" },
+    { "name": "app_usage_event" },
+    { "name": "notification" }
 ]
 TIMEZONE_OFFSET = 9
 INTERVAL_BETWEEN_LOCATION_RECORDS = 11 * 60 * 1000
@@ -182,12 +184,12 @@ def tryScheduler():
     ABCClient.close()
     return
 
-# tryScheduler()
+tryScheduler()
 
-scheduler = BackgroundScheduler(daemon = True, timezone="Asia/Seoul")
-scheduler.add_job(tryScheduler, 'cron', hour=4, minute=30, misfire_grace_time=3600)
-scheduler.start()
-print("[Flask server.py] Scheduler set")
+# scheduler = BackgroundScheduler(daemon = True, timezone="Asia/Seoul")
+# scheduler.add_job(tryScheduler, 'cron', hour=2, minute=12, misfire_grace_time=3600)
+# scheduler.start()
+# print("[Flask server.py] Scheduler set")
 
 # delete data from MongoDB which matches the condition
 @app.route("/deletedata", methods=['POST'])
